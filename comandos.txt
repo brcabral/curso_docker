@@ -1,0 +1,23 @@
+--rm
+	Remove a instância do container após a execução
+		docker container run  --rm debian bash --version
+
+--net
+	Iniciar uma instância do container selecionando o tipo de rede.
+		none: Sem rede configurada. Sem acesso a rede ou a internet
+			docker container run -d --net none debian
+		
+		brigde (padrão): Cria uma "ponte" entre as interfaces de rede do host com os containers. 
+
+		host: Usa diretamete as interfaces de rede da maquina host (nem um nível de segurança e isolamento menor)
+			docker container run -d --net host debian
+
+Consultar sobre configurações de rede.
+	https://docs.docker.com/engine/reference/commandline/network_create/#bridge-driver-options
+
+ Criar uma rede docker utilizando esta sub-rede:
+ 	docker network create --subnet=204.12.204.0/24 --gateway=204.12.204.193 andrenet 
+
+Associar os containers a rede e especificar o IP.
+	docker container run --net andrenet --ip 204.12.204.195 -it debian bash 
+
