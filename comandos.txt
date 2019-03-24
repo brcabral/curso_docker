@@ -21,3 +21,5 @@ Consultar sobre configurações de rede.
 Associar os containers a rede e especificar o IP.
 	docker container run --net andrenet --ip 204.12.204.195 -it debian bash 
 
+Executar comando dentro do banco de dados (com compose)
+	docker-compose exec db psql -U postgres -d email_sender -c 'select * from emails'
